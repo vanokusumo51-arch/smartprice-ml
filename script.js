@@ -266,7 +266,11 @@ document.addEventListener("keydown", event => {
 
 async function loadSmartphones() {
     try {
-        const response = await fetch("http://127.0.0.1:5000/api/phones");
+        const response = await fetch(`${API_URL}/api/phones`, {
+            headers: {
+                "ngrok-skip-browser-warning": "true"
+            }
+        });
 
         if (!response.ok) {
             throw new Error("Gagal mengambil data smartphone");
