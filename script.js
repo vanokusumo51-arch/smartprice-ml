@@ -10,6 +10,8 @@
 // Data contoh untuk demonstrasi.
 // Harga dan spesifikasi perlu diverifikasi sebelum dipublikasikan.
 
+const API_URL = "https://quintuple-squall-spider.ngrok-free.dev";
+
 let smartphoneDatabase = [];
     
     

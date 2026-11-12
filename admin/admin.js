@@ -2,7 +2,7 @@
    PHONEPRICE AI - ADMIN PANEL
 ========================================= */
 
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = "https://quintuple-squall-spider.ngrok-free.dev";
 
 
 // =========================================
