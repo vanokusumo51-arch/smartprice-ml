@@ -360,7 +360,7 @@ function validatePhoneData(data) {
 // output model Flask yang kamu gunakan.
 
 function formatPredictionPrice(price) {
-    const rupiah = price * 600;
+    const rupiah = price * 750;
 
     return rupiah.toLocaleString("id-ID", {
         style: "currency",
