@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PhonePrice ML - Prediksi harga smartphone menggunakan Machine Learning.">
+    <title>PhonePrice ML | Prediksi Harga Smartphone</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <header class="navbar">
+        <a href="#home" class="logo">SmartPrice <span>ML</span></a>
+
+        <nav class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#prediction">Prediksi</a>
+            <a href="#database">Database</a>
+            <a href="#about">Tentang</a>
+        </nav>
+
+        <a href="#prediction" class="nav-button">Mulai Prediksi</a>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-label">SMARTPHONE PRICE PREDICTION</p>
+            <h1>SmartPrice:<span>prediksi harga & rekomendasi smartphone</span></h1>
+            <p class="hero-description">
+                Ketahui estimasi harga smartphone berdasarkan spesifikasi
+                perangkat menggunakan teknologi Machine Learning.
+            </p>
+            <a href="#prediction" class="hero-button">Mulai Prediksi Sekarang →</a>
+        </div>
+    </section>
+
+    <!-- REKOMENDASI BERDASARKAN KEBUTUHAN -->
+<section class="needs-section" id="kebutuhan">
+
+    <div class="section-header">
+        <p>SMARTPHONE FINDER</p>
+
+        <h2>Temukan HP Sesuai Kebutuhanmu</h2>
+
+        <span>
+            Pilih kebutuhan utama kamu dan biarkan
+            PhonePrice AI mencari smartphone yang cocok.
+        </span>
+    </div>
+
+    <div class="needs-container">
+
+        <button class="need-option" data-need="gaming">
+            <span class="need-icon">🎮</span>
+            <h3>Gaming</h3>
+            <p>Untuk bermain game dan hiburan.</p>
+        </button>
+
+        <button class="need-option" data-need="camera">
+            <span class="need-icon">📸</span>
+            <h3>Fotografi</h3>
+            <p>Untuk foto dan membuat konten.</p>
+        </button>
+
+        <button class="need-option" data-need="battery">
+            <span class="need-icon">⚡</span>
+            <h3>Baterai Awet</h3>
+            <p>Untuk penggunaan dalam waktu lama.</p>
+        </button>
+
+        <button class="need-option" data-need="multitasking">
+            <span class="need-icon">💻</span>
+            <h3>Multitasking</h3>
+            <p>Untuk membuka banyak aplikasi.</p>
+        </button>
+
+        <button class="need-option" data-need="daily">
+            <span class="need-icon">📱</span>
+            <h3>Sehari-hari</h3>
+            <p>Untuk kebutuhan harian dan sosial media.</p>
+        </button>
+
+    </div>
+
+    <div class="need-result-heading" id="needResultHeading" hidden>
+        <h3>Rekomendasi Smartphone</h3>
+        <p id="needResultDescription"></p>
+    </div>
+
+    <div class="need-results" id="needResults"></div>
+
+</section>
+
+    <section class="budget-section" id="rekomendasi">
+    <div class="section-header">
+        <h2>Rekomendasi HP</h2>
+        <p>Temukan smartphone sesuai budget yang kamu miliki.</p>
+    </div>
+
+    <div class="budget-form">
+        <label for="budgetInput">Masukkan Budget Kamu</label>
+
+        <div class="budget-input-group">
+            <span>Rp</span>
+            <input
+                type="number"
+                id="budgetInput"
+                placeholder="Contoh: 2500000"
+                min="1"
+            >
+            <button id="recommendButton" type="button">
+                Cari Rekomendasi
+            </button>
+        </div>
+
+        <p class="budget-hint">
+            Masukkan budget maksimal yang ingin kamu keluarkan.
+        </p>
+    </div>
+
+    <div id="budgetResults" class="budget-results"></div>
+</section>
+
+<!-- COMPARE SMARTPHONE -->
+<section class="compare-section" id="compare">
+
+    <div class="section-heading">
+        <p>SMARTPHONE COMPARISON</p>
+        <h2>Bandingkan Smartphone</h2>
+        <span>
+            Bandingkan spesifikasi dua smartphone untuk menemukan
+            pilihan yang paling sesuai.
+        </span>
+    </div>
+
+    <div class="compare-select-container">
+
+        <div class="compare-select-box">
+            <label for="phoneSelect1">Smartphone Pertama</label>
+            <select id="phoneSelect1">
+                <option value="">Pilih Smartphone</option>
+            </select>
+        </div>
+
+        <div class="compare-vs">VS</div>
+
+        <div class="compare-select-box">
+            <label for="phoneSelect2">Smartphone Kedua</label>
+            <select id="phoneSelect2">
+                <option value="">Pilih Smartphone</option>
+            </select>
+        </div>
+
+    </div>
+
+    <button type="button" id="compareButton" class="compare-button">
+        Bandingkan Sekarang
+    </button>
+
+    <div id="compareResults" class="compare-results"></div>
+
+</section>
+
+<!-- SMART SCORE -->
+<section class="smart-score-section" id="smart-score">
+
+    <div class="section-heading">
+        <p>SMARTPHONE INTELLIGENCE</p>
+        <h2>Smartphone Smart Score</h2>
+        <span>
+            Lihat penilaian smartphone berdasarkan spesifikasi
+            dan keunggulan masing-masing perangkat.
+        </span>
+    </div>
+
+    <div class="smart-score-info">
+        <div class="smart-score-icon">🏆</div>
+        <h3>Seberapa Bagus Smartphone Pilihanmu?</h3>
+        <p>
+            Sistem akan menghitung nilai smartphone berdasarkan
+            performa, kamera, baterai, dan kapasitas penyimpanan.
+        </p>
+    </div>
+
+    <div class="smart-score-controls">
+        <label for="smartScoreSort">Urutkan Smartphone</label>
+
+        <select id="smartScoreSort">
+            <option value="highest">Skor Tertinggi</option>
+            <option value="lowest">Skor Terendah</option>
+        </select>
+    </div>
+
+    <div class="smart-score-grid" id="smartScoreGrid"></div>
+
+</section>
+
+    <!-- DATABASE -->
+    <section class="database-section" id="database">
+        <div class="section-heading">
+            <p>SMARTPHONE DATABASE</p>
+            <h2>Jelajahi Smartphone</h2>
+            <span>Temukan informasi dan spesifikasi berbagai smartphone.</span>
+        </div>
+
+        <div class="database-controls">
+            <input
+                type="search"
+                id="searchPhone"
+                placeholder="Cari nama smartphone atau merek..."
+                aria-label="Cari smartphone"
+            >
+
+            <select id="brandFilter" aria-label="Filter merek">
+                <option value="all">Semua Merek</option>
+                <option value="Xiaomi">Xiaomi</option>
+                <option value="Samsung">Samsung</option>
+                <option value="OPPO">OPPO</option>
+                <option value="Vivo">Vivo</option>
+                <option value="Infinix">Infinix</option>
+                <option value="Realme">Realme</option>
+            </select>
+        </div>
+
+        <div class="phone-grid" id="phoneGrid"></div>
+        <p class="database-note" id="databaseNote" aria-live="polite"></p>
+    </section>
+
+    <!-- PREDICTION -->
+    <main id="prediction">
+        <section class="prediction-section">
+            <div class="section-heading">
+                <p>PRICE ESTIMATION</p>
+                <h2>Prediksi Harga Smartphone</h2>
+                <span>Masukkan 11 spesifikasi smartphone untuk mendapatkan estimasi harga.</span>
+            </div>
+
+            <form id="predictionForm">
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="weight">Berat HP (gram)</label>
+                        <input type="number" id="weight" placeholder="Contoh: 188" min="0.01" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resolution">Ukuran Layar (inci)</label>
+                        <input type="number" id="resolution" placeholder="Contoh: 6.5" min="0.01" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ppi">Kepadatan Layar (PPI)</label>
+                        <input type="number" id="ppi" placeholder="Contoh: 395" min="0.01" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cpuCore">Jumlah CPU Core</label>
+                        <input type="number" id="cpuCore" placeholder="Contoh: 8" min="0.01" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cpuFreq">Frekuensi CPU (GHz)</label>
+                        <input type="number" id="cpuFreq" placeholder="Contoh: 2.4" min="0.01" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="internalMem">Memori Internal (GB)</label>
+                        <input type="number" id="internalMem" placeholder="Contoh: 128" min="0.01" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ram">RAM (GB)</label>
+                        <input type="number" id="ram" placeholder="Contoh: 8" min="0.01" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rearCam">Kamera Belakang (MP)</label>
+                        <input type="number" id="rearCam" placeholder="Contoh: 50" min="0.01" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="frontCam">Kamera Depan (MP)</label>
+                        <input type="number" id="frontCam" placeholder="Contoh: 16" min="0.01" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="battery">Baterai (mAh)</label>
+                        <input type="number" id="battery" placeholder="Contoh: 5000" min="0.01" step="any" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="thickness">Ketebalan HP (mm)</label>
+                        <input type="number" id="thickness" placeholder="Contoh: 8.2" min="0.01" step="any" required>
+                    </div>
+
+                </div>
+
+                <button type="submit" id="predictButton">Prediksi Harga HP</button>
+                <p class="form-note">Pastikan semua spesifikasi diisi sesuai satuan yang diminta.</p>
+            </form>
+
+            <!-- HASIL PREDIKSI: hanya satu elemen dengan ID result -->
+            <section class="result-container" id="result" hidden>
+                <h3>Hasil Prediksi</h3>
+                <p id="priceResult">-</p>
+                <p class="result-caption">Estimasi harga berdasarkan model Machine Learning.</p>
+                <div id="specSummary" class="spec-summary"></div>
+            </section>
+        </section>
+    </main>
+
+    <!-- ABOUT -->
+    <section class="about-section" id="about">
+        <div class="about-content">
+            <p class="about-label">ABOUT THE PROJECT</p>
+            <h2>Tentang SmartPrice ML</h2>
+            <p>
+                SmartPrice ML merupakan aplikasi prediksi harga smartphone
+                berbasis Machine Learning. Aplikasi ini menggunakan
+                spesifikasi perangkat sebagai fitur untuk memperkirakan
+                harga smartphone.
+            </p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>© 2026 SmartPrice ML. All Rights Reserved.</p>
+        <span>Powered by Machine Learning</span>
+        <span>Presented by Kelompok 5</span>
+    </footer>
+
+    <!-- MODAL DETAIL SMARTPHONE -->
+    <div class="modal-overlay" id="phoneModal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="detailName">
+            <button type="button" class="close-modal" id="closeModal" aria-label="Tutup detail">&times;</button>
+            <h2 id="detailName">Nama Smartphone</h2>
+            <p id="detailBrand">Merek</p>
+            <div class="detail-list" id="detailSpecs"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

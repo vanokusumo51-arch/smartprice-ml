@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhonePrice AI | Admin Panel</title>
+
+    <link rel="stylesheet" href="admin.css">
+</head>
+
+<body>
+
+    <div class="admin-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <h2>PhonePrice <span>AI</span></h2>
+                <p>Administrator Panel</p>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#dashboard">Dashboard</a>
+                <a href="#add-phone">Tambah Smartphone</a>
+                <a href="#phone-list">Daftar Smartphone</a>
+                <a href="../index.html">Website Utama</a>
+            </nav>
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <header class="topbar">
+                <div>
+                    <h1>Admin Dashboard</h1>
+                    <p>Kelola database smartphone PhonePrice AI.</p>
+                </div>
+
+                <div class="api-status">
+                    <span id="apiIndicator"></span>
+                    <span id="apiStatus">Memeriksa API...</span>
+                </div>
+            </header>
+
+
+            <!-- DASHBOARD -->
+            <section id="dashboard">
+
+                <h2>Ringkasan Database</h2>
+
+                <div class="stats-grid">
+
+                    <div class="stat-card">
+                        <p>Total Smartphone</p>
+                        <h2 id="totalPhones">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Total Brand</p>
+                        <h2 id="totalBrands">0</h2>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Status API</p>
+                        <h2 id="apiStat">Checking</h2>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FORM TAMBAH SMARTPHONE -->
+            <section id="add-phone" class="panel">
+
+                <h2>Tambah Smartphone</h2>
+                <p>Masukkan informasi smartphone ke database.</p>
+
+                <form id="addPhoneForm">
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+                            <label>Nama Smartphone</label>
+                            <input type="text" id="phoneName"
+                                placeholder="Contoh: Samsung Galaxy A55" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Brand</label>
+                            <input type="text" id="phoneBrand"
+                                placeholder="Contoh: Samsung" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Harga (Rupiah)</label>
+                            <input type="number" id="phonePrice"
+                                placeholder="5000000" min="1" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>URL Gambar</label>
+                            <input type="text" id="phoneImage"
+                                placeholder="https://...">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Chipset</label>
+                            <input type="text" id="phoneChipset"
+                                placeholder="Snapdragon 7 Gen 1">
+                        </div>
+
+                        <div class="form-group">
+                            <label>RAM</label>
+                            <input type="text" id="phoneRam"
+                                placeholder="8 GB">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Storage</label>
+                            <input type="text" id="phoneStorage"
+                                placeholder="256 GB">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Layar</label>
+                            <input type="text" id="phoneScreen"
+                                placeholder="AMOLED 6.7 inci">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Resolusi</label>
+                            <input type="text" id="phoneResolution"
+                                placeholder="1080 x 2340">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kamera Belakang</label>
+                            <input type="text" id="phoneCamera"
+                                placeholder="50 MP + 12 MP">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Kamera Depan</label>
+                            <input type="text" id="phoneFrontCamera"
+                                placeholder="32 MP">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Baterai</label>
+                            <input type="text" id="phoneBattery"
+                                placeholder="5000 mAh">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Charging</label>
+                            <input type="text" id="phoneCharging"
+                                placeholder="67W">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Sistem Operasi</label>
+                            <input type="text" id="phoneOS"
+                                placeholder="Android 15">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Berat</label>
+                            <input type="text" id="phoneWeight"
+                                placeholder="200 gram">
+                        </div>
+
+                    </div>
+
+                    <button type="submit" id="submitPhone">
+                        Simpan Smartphone
+                    </button>
+
+                    <p id="formMessage"></p>
+
+                </form>
+
+            </section>
+
+
+            <!-- DAFTAR SMARTPHONE -->
+            <section id="phone-list" class="panel">
+
+                <h2>Database Smartphone</h2>
+                <p>Kelola data smartphone yang tersimpan.</p>
+
+                <div class="table-toolbar">
+
+                    <input type="search" id="phoneSearch"
+                        placeholder="Cari smartphone...">
+
+                    <select id="phoneBrandFilter">
+                        <option value="all">Semua Brand</option>
+                    </select>
+
+                    <button type="button" id="refreshPhones">
+                        Refresh Data
+                    </button>
+
+                </div>
+
+                <div class="table-wrapper">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Smartphone</th>
+                                <th>Brand</th>
+                                <th>Harga</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="phoneTableBody">
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <p id="phoneTableMessage">Memuat data...</p>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="admin.js"></script>
+
+</body>
+</html>
