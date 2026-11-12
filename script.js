@@ -355,12 +355,12 @@ function validatePhoneData(data) {
 
 // Format hasil prediksi menjadi Rupiah.
 //
-// Faktor 800 dipertahankan dari kode lamamu.
+// Faktor 600 dipertahankan dari kode lamamu.
 // Pastikan faktor ini memang sesuai dengan satuan
 // output model Flask yang kamu gunakan.
 
 function formatPredictionPrice(price) {
-    const rupiah = price * 800;
+    const rupiah = price * 600;
 
     return rupiah.toLocaleString("id-ID", {
         style: "currency",
