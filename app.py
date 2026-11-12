@@ -9,13 +9,7 @@ from database import get_connection
 
 app = Flask(__name__)
 
-CORS(app, resources={
-    r"/*": {
-        "origins": "*",
-        "methods": ["GET", "POST", "DELETE", "OPTIONS"],
-        "allow_headers": ["Content-Type"]
-    }
-})
+CORS(app)
 
 # =====================================
 # MACHINE LEARNING MODEL

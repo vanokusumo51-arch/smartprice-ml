@@ -48,10 +48,9 @@ function formatPrice(price) {
 
 async function checkAPI() {
     try {
-        const response = await fetch(`${API_URL}/`, {
-            method: "GET",
-            cache: "no-store"
-        });
+        const response = await fetch(API_URL, {
+    headers: { "ngrok-skip-browser-warning": "true" }
+});
 
         if (!response.ok) {
             throw new Error("API tidak merespons");
@@ -91,8 +90,9 @@ async function loadSmartphones() {
 
         phoneTableMessage.textContent = "Memuat data...";
 
-        const response = await fetch(`${API_URL}/api/phones`);
-
+        const response = await fetch(`${API_URL}/api/phones`, {
+    headers: { "ngrok-skip-browser-warning": "true" }
+});
         if (!response.ok) {
             throw new Error("Gagal mengambil data smartphone");
         }
