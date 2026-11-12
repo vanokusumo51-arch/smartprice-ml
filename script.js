@@ -419,16 +419,14 @@ predictionForm.addEventListener("submit", async event => {
     resultSection.hidden = true;
 
     try {
-        const response = await fetch(
-            "http://127.0.0.1:5000/predict",
-            {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(phoneData)
-            }
-        );
+        const response = await fetch(`${API_URL}/predict`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "ngrok-skip-browser-warning": "true"
+            },
+            body: JSON.stringify(phoneData)
+        });
 
         const result = await response.json();
 
